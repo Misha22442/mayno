@@ -1,0 +1,195 @@
+/* --- 1. ГЛОБАЛЬНІ СТИЛІ ТА ФОН --- */
+:root {
+    --main-blue: #007bff; /* Основний колір кнопки */
+    --main-text: #333;
+    --light-bg: #f4f4f9; /* Світло-сірий фон сторінки */
+    --header-bg: white;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--light-bg); 
+    color: var(--main-text);
+}
+
+/* --- 2. ХЕДЕР (Навігаційна панель) --- */
+.app-header {
+    background-color: var(--header-bg);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 40px;
+    display: flex; /* FLEX для вирівнювання */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header__logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--main-text);
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.app-header__nav {
+    display: flex;
+    gap: 25px;
+    margin-right: auto;
+}
+
+.app-header__link {
+    color: #555;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 0;
+}
+
+.btn-login-header {
+    /* Стиль кнопки Увійти справа (якщо вона є) */
+    background-color: var(--main-blue); 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* --- 3. СТОРІНКА ЛОГІНУ (Duty Portal Style) --- */
+.login-page {
+    display: flex;
+    /* Висота мінус хедер і футер */
+    min-height: calc(100vh - 100px); 
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 6px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+}
+
+.login-form-container__title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Стиль полів вводу */
+.form-group input {
+    width: 100%;
+    padding: 14px 10px; /* Висота полів вводу */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+/* Стиль кнопки "Увійти" */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--main-blue); /* Яскраво-синій */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: var(--main-blue);
+    text-decoration: none;
+}
+
+/* --- 4. DASHBOARD STYLES (Збережено вашу логіку) --- */
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* GRID СІТКА для карток */
+.dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на ПК */
+    gap: 20px;
+}
+
+/* --- 5. ФУТЕР --- */
+.app-footer {
+    background-color: var(--light-bg);
+    color: #555;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid #eee;
+}
+
+/* --- 6. MEDIA QUERY (Збережено вашу адаптацію) --- */
+@media (max-width: 768px) {
+    .dashboard__grid {
+        grid-template-columns: 1fr; /* 1 колонка на мобільному */
+    }
+
+    .add-form {
+        flex-direction: column; /* Форма стає вертикальною */
+    }
+    
+    .app-header {
+        padding: 10px 20px;
+    }
+}

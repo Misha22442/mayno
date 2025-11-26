@@ -1,0 +1,29 @@
+.item-card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* clearfix для float */
+    overflow: hidden; 
+}
+
+.item-card__image {
+    float: left; /* FLOAT ТУТ */
+    width: 60px;
+    height: 60px;
+    background-color: #34495e;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.item-card__title {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+}
+
+.item-card__actions {
+    margin-top: 10px;
+    display: flex; /* Flex всередині */
+    justify-content: flex-end;
+}
