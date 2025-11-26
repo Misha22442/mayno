@@ -6,10 +6,18 @@
     --header-bg: white;
 }
 
-* { box-sizing: border-box; }
+* { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
     background-color: var(--light-bg); 
     color: var(--main-text);
@@ -19,49 +27,52 @@ body {
 .app-header {
     background-color: var(--header-bg);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 40px;
-    display: flex; /* FLEX для вирівнювання */
+    padding: 10px 15px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .app-header__logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 900;
     color: var(--main-text);
     text-decoration: none;
-    margin-right: 30px;
 }
 
 .app-header__nav {
     display: flex;
-    gap: 25px;
-    margin-right: auto;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .app-header__link {
     color: #555;
     text-decoration: none;
-    font-size: 1rem;
-    padding: 5px 0;
+    font-size: 0.85rem;
+    padding: 5px;
+    white-space: nowrap;
 }
 
 .btn-login-header {
-    /* Стиль кнопки Увійти справа (якщо вона є) */
     background-color: var(--main-blue); 
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 0.85rem;
 }
+
 .btn-theme-toggle {
     background: none;
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 /* --- 3. СТОРІНКА ЛОГІНУ (Duty Portal Style) --- */
@@ -306,17 +317,103 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* --- 6. MEDIA QUERY (Збережено вашу адаптацію) --- */
+/* --- 6. MEDIA QUERY (Адаптивний дизайн) --- */
 @media (max-width: 768px) {
-    .dashboard__grid {
-        grid-template-columns: 1fr; /* 1 колонка на мобільному */
-    }
-
-    .add-form {
-        flex-direction: column; /* Форма стає вертикальною */
+    .app-header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
     }
     
-    .app-header {
-        padding: 10px 20px;
+    .app-header__logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .app-header__nav {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .dashboard-page {
+        padding: 10px;
+    }
+    
+    .dashboard-page h2 {
+        font-size: 1.3rem;
+    }
+    
+    .dashboard-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 10px 15px;
+    }
+    
+    .dashboard-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .dashboard-filters__search {
+        width: 100%;
+    }
+    
+    .dashboard-filters__category,
+    .dashboard-filters__status {
+        width: 100%;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .add-form {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .add-form input,
+    .add-form select,
+    .add-form button {
+        font-size: 16px; /* Запобігає zoom на iOS */
+    }
+    
+    .login-page {
+        padding: 15px;
+    }
+    
+    .login-box {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header__nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .btn-login-header {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .item-card__name {
+        font-size: 1rem;
+    }
+    
+    .stat-card__value {
+        font-size: 1.3rem;
     }
 }
