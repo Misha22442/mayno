@@ -5,7 +5,19 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     /* clearfix для float */
-    overflow: hidden; 
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.item-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.item-card--written-off {
+    opacity: 0.6;
+    background: #f8f9fa;
+    border-color: #dc3545;
 }
 
 .item-card__image {
@@ -20,10 +32,62 @@
 .item-card__title {
     margin: 0 0 5px 0;
     color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.item-card__meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+.item-card__category {
+    color: #888;
+    font-size: 0.85rem;
+    margin: 3px 0;
+    font-style: italic;
+}
+
+.item-card__status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.item-card__status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.item-card__status-select {
+    padding: 6px 12px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.item-card__status-select:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 .item-card__actions {
-    margin-top: 10px;
-    display: flex; /* Flex всередині */
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
     justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.item-card__actions button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
 }

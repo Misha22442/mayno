@@ -141,7 +141,7 @@ body {
 
 /* --- 4. DASHBOARD STYLES (Збережено вашу логіку) --- */
 .dashboard {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -151,15 +151,134 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Статистика */
+.dashboard__stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    min-width: 120px;
+    border-left: 4px solid #3498db;
+}
+
+.stat-card--total { border-left-color: #3498db; }
+.stat-card--stock { border-left-color: #28a745; }
+.stat-card--issued { border-left-color: #ffc107; }
+.stat-card--repair { border-left-color: #fd7e14; }
+.stat-card--written { border-left-color: #dc3545; }
+
+.stat-card__number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-card__label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Фільтри */
+.dashboard__filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-search {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.filter-search:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Алерти */
+.alert {
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.alert--error {
+    background-color: #ffe6e6;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.alert--success {
+    background-color: #e6ffe6;
+    color: #28a745;
+    border: 1px solid #28a745;
 }
 
 .add-form {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     background: white;
     padding: 15px;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.add-form input,
+.add-form select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+.add-form input:focus,
+.add-form select:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 /* GRID СІТКА для карток */
@@ -167,6 +286,14 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 колонки на ПК */
     gap: 20px;
+}
+
+.no-items {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1.1rem;
 }
 
 /* --- 5. ФУТЕР --- */
