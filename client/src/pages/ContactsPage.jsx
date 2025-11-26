@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../utils/axios';
 import '../styles/InfoPages.css';
 
 const ContactsPage = () => {
@@ -11,6 +12,8 @@ const ContactsPage = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,16 +23,24 @@ const ContactsPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Тут можна додати відправку на сервер
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+    setError('');
     
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
+    try {
+      await axios.post('/contact', formData);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Помилка відправки. Спробуйте пізніше.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -103,7 +114,13 @@ const ContactsPage = () => {
               <h2>Форма звернення</h2>
               {submitted && (
                 <div className="success-message">
-                  ✅ Ваше повідомлення успішно отримано! Ми вам відповімо найближчим часом.
+                  ✅ Ваше повідомлення успішно надіслано на пошту! Ми вам відповімо найближчим часом.
+                </div>
+              )}
+              
+              {error && (
+                <div className="error-message" style={{background: '#fee', color: '#c00', padding: '10px', borderRadius: '5px', marginBottom: '15px'}}>
+                  ❌ {error}
                 </div>
               )}
               
@@ -160,7 +177,9 @@ const ContactsPage = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn-submit">Надіслати</button>
+                <button type="submit" className="btn-submit" disabled={loading}>
+                  {loading ? 'Надсилання...' : 'Надіслати'}
+                </button>
               </form>
             </div>
           </div>

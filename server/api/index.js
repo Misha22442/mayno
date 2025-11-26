@@ -18,6 +18,7 @@ const User = require('../models/User.js');
 
 const itemRoutes = require('../routes/itemRoutes.js');
 const authRoutes = require('../routes/authRoutes.js');
+const contactRoutes = require('../routes/contactRoutes.js');
 
 const app = express();
 
@@ -52,6 +53,7 @@ mongoose.connect(DB_URI, mongooseOptions)
     // Маршрути
     app.use('/items', itemRoutes);
     app.use('/auth', authRoutes);
+    app.use('/contact', contactRoutes);
 
     app.get('/', (req, res) => res.send('Army Inventory API is running'));
 
