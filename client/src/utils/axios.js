@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-// Зміни на посилання Vercel після деплою
+// API URL - Render для production, localhost для development
 const instance = axios.create({
-    baseURL: 'http://localhost:5000' 
-    // baseURL: 'https://tviy-server.vercel.app'
+    baseURL: process.env.NODE_ENV === 'production' 
+        ? 'https://mayno.onrender.com'
+        : 'http://localhost:5000'
 });
 
 export default instance;
