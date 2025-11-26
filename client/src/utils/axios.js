@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-// API URL - Render для production, localhost для development
+// API URL - Render backend
 const instance = axios.create({
-    baseURL: process.env.NODE_ENV === 'production' 
-        ? 'https://mayno.onrender.com'
-        : 'http://localhost:5000'
+    baseURL: 'https://mayno.onrender.com'
 });
 
 export default instance;
