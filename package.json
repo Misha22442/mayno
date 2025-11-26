@@ -1,8 +1,14 @@
 {
-  "dependencies": {
-    "@reduxjs/toolkit": "^2.10.1",
-    "axios": "^1.13.2",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^7.9.6"
+  "name": "army-inventory-monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd server && npm start",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "npm run install-server && npm run install-client",
+    "build": "cd client && npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
