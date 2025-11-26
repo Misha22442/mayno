@@ -21,12 +21,16 @@ const authRoutes = require('../routes/authRoutes.js');
 
 const app = express();
 
+// CORS - дозволяємо всі домени
 app.use(cors({
-    origin: true, 
-    credentials: true, 
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept', 'Access-Control-Allow-Credentials']
+    origin: '*',
+    credentials: false,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept', 'role']
 }));
+
+// Обробка preflight запитів
+app.options('*', cors());
 
 // ВИПРАВЛЕННЯ: Використовуємо bodyParser 
 app.use(bodyParser.json());
